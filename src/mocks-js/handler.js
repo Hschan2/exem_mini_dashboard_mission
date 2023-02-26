@@ -1,7 +1,7 @@
 import { rest } from 'msw';
-import timeseriesDataGet from './resolver/timeseries';
-import { pieResolver } from './resolver/pie';
-import { valueResolver } from './resolver/value';
+import timeseriesDataGet from './resolvers/timeseries';
+import { pieResolver } from './resolvers/pie';
+import { valueResolver } from './resolvers/value';
 const chartHandlers = [
   rest.get(`/timeseries`, timeseriesDataGet),
   rest.get('/pie', pieResolver),
