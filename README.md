@@ -1,5 +1,12 @@
 # EXEM_MINI_DASHBOARD MISSION
 
+```
+npm install
+
+npm start
+```
+
+## 프로젝트 체크 리스트
 - [X] 프로젝트 생성
 - [X] 차트 라이브러리 생성 (recharts)
 - [X] 기본 화면 구성하기
