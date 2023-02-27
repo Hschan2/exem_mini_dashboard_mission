@@ -1,18 +1,16 @@
+import GetPieChart from './components/GetPieChart';
 import './App.css';
+import GetLineChart from './components/GetLineChart';
+import GetValueChart from './components/GetValueChart';
 
 function App() {
-  fetch('/pie')
-    .then(response => response.json())
-    .then(data => {
-      console.log(data);
-    })
-    .catch(error => {
-      console.log("에러: ", error);
-    });
 
   return (
     <div className="App">
-      안녕
+      <h1>EXEM_MINI_DASHBOARD</h1>
+      <GetPieChart />
+      <GetLineChart />
+      <GetValueChart />
     </div>
   );
 }
