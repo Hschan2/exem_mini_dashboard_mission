@@ -36,7 +36,7 @@ function GetLineChart() {
                 <Legend />
                 <Line type="monotone" dataKey="value" stroke="#8884d8" activeDot={{ r: 8 }} />
             </LineChart>
-            <style jsx>{`
+            <style jsx="true">{`
                 .lineChartContainer {
                     display: flex;
                     justify-content: center;

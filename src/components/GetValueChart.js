@@ -13,7 +13,7 @@ function GetValueChart() {
     return (
         <div className='valueChartContainer'>
             <p className='valueChart'>{valueData.value}<span className='valueUnit'>ms</span></p>
-            <style jsx>{`
+            <style jsx="true">{`
                 .valueChartContainer {
                     display: flex;
                     justify-content: center;
