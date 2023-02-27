@@ -7,7 +7,4 @@ const chartHandlers = [
   rest.get('/pie', pieResolver),
   rest.get('/value', valueResolver),
 ];
-export const handlers = [
-  chartHandlers,
-];
-export const worker = setupWorker(...chartHandlers);
+export const handlers = chartHandlers;
