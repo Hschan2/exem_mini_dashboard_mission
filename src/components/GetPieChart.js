@@ -25,7 +25,7 @@ function GetPieChart() {
                 cy="50%"
                 outerRadius={100}
                 fill="#8884d8"
-                label={({ name, value }) => `${name}(${value})`}
+                label={({ name, value }) => `${name}(${value}%)`}
                 >
                     {pieData.map((entry, index) => (
                         <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
