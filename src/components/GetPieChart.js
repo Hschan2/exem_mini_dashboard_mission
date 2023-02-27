@@ -15,8 +15,8 @@ function GetPieChart() {
     }, []);
 
     return (
-        <div>
-            <PieChart width={400} height={400}>
+        <div className='pieChartContainer'>
+            <PieChart width={400} height={300} className="pieChart">
                 <Pie
                 data={pieData}
                 dataKey="value"
@@ -32,6 +32,17 @@ function GetPieChart() {
                     ))}
                 </Pie>
             </PieChart>
+            <style jsx>{`
+                .pieChartContainer {
+                    display: flex;
+                    justify-content: center;
+                }
+                .pieChart {
+                    border: 1px solid rgba(0, 0, 0, 0.2);
+                    border-radius: 20px;
+                    padding: 0 30px;
+                }
+            `}</style>
         </div>
     )
 }
