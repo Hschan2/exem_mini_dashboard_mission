@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { PieChart, Pie, Cell } from 'recharts';
-import { currentTime, tenMinutesAgo } from '../constants/time';
+import { CURRENT_TIME, TEN_MINUTES_AGO } from '../constants/time';
 import useInterval from './useInterval';
 
 function GetPieChart() {
@@ -8,7 +8,7 @@ function GetPieChart() {
     const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#AF19FF'];
 
     const fetchData = async () => {
-        const response = await fetch(`/pie?from=${tenMinutesAgo}&to=${currentTime}`);
+        const response = await fetch(`/pie?from=${TEN_MINUTES_AGO}&to=${CURRENT_TIME}`);
         const data = await response.json();
         setPieData(data.data);
     };

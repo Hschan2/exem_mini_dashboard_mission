@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { currentTime, tenMinutesAgo } from '../constants/time';
+import { CURRENT_TIME, TEN_MINUTES_AGO } from '../constants/time';
 import useInterval from './useInterval';
 
 function GetValueChart() {
     const [valueData, setValueData] = useState([]);
 
     const fetchData = async () => {
-        return await fetch(`/value?from=${tenMinutesAgo}&to=${currentTime}`)
+        return await fetch(`/value?from=${TEN_MINUTES_AGO}&to=${CURRENT_TIME}`)
             .then(response => response.json())
             .then(data => setValueData(data))
             .catch(error => console.error(error));
