@@ -1,18 +1,25 @@
 import { useEffect, useState } from 'react';
 import { PieChart, Pie, Cell } from 'recharts';
+import { currentTime, tenMinutesAgo } from '../constants/time';
+import useInterval from './useInterval';
 
 function GetPieChart() {
     const [pieData, setPieData] = useState([]);
     const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#AF19FF'];
 
-    useEffect(() => {
-      const fetchData = async () => {
-        const response = await fetch('/pie?from=1677078000&to=1677081600');
+    const fetchData = async () => {
+        const response = await fetch(`/pie?from=${tenMinutesAgo}&to=${currentTime}`);
         const data = await response.json();
         setPieData(data.data);
-      };
-      fetchData();
+    };
+
+    useEffect(() => {
+        fetchData();
     }, []);
+
+    useInterval(() => {
+        fetchData();
+    }, 10000)
 
     return (
         <div className='pieChartContainer'>

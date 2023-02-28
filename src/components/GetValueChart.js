@@ -1,18 +1,28 @@
 import React, { useEffect, useState } from 'react'
+import { currentTime, tenMinutesAgo } from '../constants/time';
+import useInterval from './useInterval';
 
 function GetValueChart() {
     const [valueData, setValueData] = useState([]);
 
-    useEffect(() => {
-        fetch('/value?from=1677081600&to=1677082200')
+    const fetchData = async () => {
+        return await fetch(`/value?from=${tenMinutesAgo}&to=${currentTime}`)
             .then(response => response.json())
             .then(data => setValueData(data))
             .catch(error => console.error(error));
+    }
+
+    useEffect(() => {
+        fetchData();
     }, []);
+
+    useInterval(() => {
+        fetchData();
+    }, 10000)
   
     return (
         <div className='valueChartContainer'>
-            <p className='valueChart'>{valueData.value}<span className='valueUnit'>ms</span></p>
+            <p className='valueChart'>{valueData.value}<span className='valueUnit'>mib</span></p>
             <style jsx="true">{`
                 .valueChartContainer {
                     display: flex;

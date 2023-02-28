@@ -8,22 +8,29 @@ import {
     Tooltip,
     Legend,
 } from 'recharts';
+import { currentTime, tenMinutesAgo } from '../constants/time';
+import useInterval from './useInterval';
 
 function GetLineChart() {
     const [lineData, setLineData] = useState([]);
 
+    const fetchData = async () => {
+        const response = await fetch(`/timeseries?from=${tenMinutesAgo}&to=${currentTime}`);
+        const data = await response.json();
+        const chartData = data.times.map((time, index) => ({
+            time: new Date(time).toLocaleTimeString(),
+            value: data.data[index],
+          }));
+        setLineData(chartData);
+    };
+
     useEffect(() => {
-        const fetchData = async () => {
-            const response = await fetch('/timeseries?from=1677078000&to=1677081600');
-            const data = await response.json();
-            const chartData = data.times.map((time, index) => ({
-                time: new Date(time).toLocaleTimeString(),
-                value: data.data[index],
-              }));
-            setLineData(chartData);
-        };
         fetchData();
     }, []);
+
+    useInterval(() => {
+        fetchData();
+    }, 10000)
 
     return (
         <div className='lineChartContainer'>
