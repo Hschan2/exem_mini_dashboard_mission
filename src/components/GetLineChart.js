@@ -8,14 +8,14 @@ import {
     Tooltip,
     Legend,
 } from 'recharts';
-import { CURRENT_TIME, TEN_MINUTES_AGO } from '../constants/time';
+import { FROM, TO } from '../constants/time';
 import useInterval from './useInterval';
 
 function GetLineChart() {
     const [lineData, setLineData] = useState([]);
 
     const fetchData = async () => {
-        const response = await fetch(`/timeseries?from=${TEN_MINUTES_AGO}&to=${CURRENT_TIME}`);
+        const response = await fetch(`/timeseries?from=${FROM}&to=${TO}`);
         const data = await response.json();
         const chartData = data.times.map((time, index) => ({
             time: new Date(time).toLocaleTimeString(),
