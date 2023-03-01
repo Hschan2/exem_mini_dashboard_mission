@@ -10,12 +10,12 @@ function App() {
   const handleTimeChange = (event) => {
     const { value } = event.target;
 
-    setSelectedTime(value);
+    setSelectedTime(Number(value));
   }
 
   return (
     <div className="App">
-      <h1>EXEM MINI DASHBOARD</h1>
+      <h1 className='banner'>EXEM MINI DASHBOARD</h1>
       <select value={selectedTime} onChange={handleTimeChange} className="selectedTime">
         <option hidden>시간 선택</option>
         <option value="10">10분</option>
@@ -26,9 +26,15 @@ function App() {
       <GetLineChart selectedTime={selectedTime} />
       <GetValueChart selectedTime={selectedTime} />
       <style jsx="true">{`
+        .banner {
+          padding: 30px 0 30px 0;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+          background-color: #1D1C1A;
+          color: #FAF8F6;
+        }
         .selectedTime {
           padding: 5px;
-          margin-bottom: 20px;
+          margin: 20px 0 20px 0;
           border-radius: 10px;
         }
       `}</style>

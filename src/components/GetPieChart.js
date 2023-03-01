@@ -17,7 +17,7 @@ function GetPieChart({selectedTime}) {
 
     return (
         <div className='pieChartContainer'>
-            <PieChart width={500} height={300} className="pieChart">
+            <PieChart width={600} height={300} className="pieChart">
                 <Pie
                 data={pieData}
                 dataKey="value"
