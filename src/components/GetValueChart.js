@@ -20,7 +20,7 @@ function GetValueChart({selectedTime}) {
                 .valueChartContainer {
                     display: flex;
                     justify-content: center;
-                    margin-top: 10px;
+                    margin: 90px 0 10px 0;
                 }
                 .valueChart {
                     border: 1px solid rgba(0, 0, 0, 0.2);
