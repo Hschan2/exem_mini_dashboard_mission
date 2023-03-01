@@ -7,8 +7,9 @@ import { useState } from 'react';
 function App() {
   const [selectedTime, setSelectedTime] = useState(10);
 
-  const handleTimeChange = (event) => {
-    const { value } = event.target;
+  const handleTimeChange = (e) => {
+    e.preventDefault();
+    const { value } = e.target;
 
     setSelectedTime(Number(value));
   }
@@ -16,12 +17,16 @@ function App() {
   return (
     <div className="App">
       <h1 className='banner'>EXEM MINI DASHBOARD</h1>
-      <select value={selectedTime} onChange={handleTimeChange} className="selectedTime">
-        <option hidden>시간 선택</option>
-        <option value="10">10분</option>
-        <option value="30">30분</option>
-        <option value="60">1시간</option>
-      </select>
+      <div className='selectContainer'>
+        <span className='selectLabel'>시간을 선택해주세요. (예. 10분 전부터 현재 시간까지)</span>
+        <select value={selectedTime} onChange={handleTimeChange} className="selectedTime">
+          <option hidden>시간 선택</option>
+          <option value="10">10분</option>
+          <option value="30">30분</option>
+          <option value="60">1시간</option>
+        </select>
+      </div>
+      
       <GetPieChart selectedTime={selectedTime} />
       <GetLineChart selectedTime={selectedTime} />
       <GetValueChart selectedTime={selectedTime} />
@@ -32,9 +37,15 @@ function App() {
           background-color: #1D1C1A;
           color: #FAF8F6;
         }
+        .selectContainer {
+          margin: 20px 0 20px 0;
+        }
+        .selectLabel {
+          padding: 0 10px; 0 10px;
+          font-size: 12px;
+        }
         .selectedTime {
           padding: 5px;
-          margin: 20px 0 20px 0;
           border-radius: 10px;
         }
       `}</style>
