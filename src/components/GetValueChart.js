@@ -1,23 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { FROM, TO } from '../constants/time';
+import GetFetchData from './getFetchData';
 import useInterval from './useInterval';
 
 function GetValueChart() {
     const [valueData, setValueData] = useState([]);
 
-    const fetchData = async () => {
-        return await fetch(`/value?from=${FROM}&to=${TO}`)
-            .then(response => response.json())
-            .then(data => setValueData(data))
-            .catch(error => console.error(error));
-    }
-
     useEffect(() => {
-        fetchData();
+        GetFetchData('value', setValueData);
     }, []);
 
     useInterval(() => {
-        fetchData();
+        GetFetchData('value', setValueData);
     }, 10000)
   
     return (
