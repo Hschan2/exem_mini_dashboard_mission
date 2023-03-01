@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import GetFetchData from './getFetchData';
+import fetchData from './getFetchData';
 import useInterval from './useInterval';
 
 function GetValueChart({selectedTime}) {
     const [valueData, setValueData] = useState([]);
 
     useEffect(() => {
-        GetFetchData('value', setValueData, selectedTime);
-    }, []);
+        fetchData('value', setValueData, selectedTime);
+    }, [selectedTime]);
 
     useInterval(() => {
-        GetFetchData('value', setValueData, selectedTime);
+        fetchData('value', setValueData, selectedTime);
     }, 10000)
   
     return (

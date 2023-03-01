@@ -3,6 +3,8 @@ import './App.css';
 import GetLineChart from './components/GetLineChart';
 import GetValueChart from './components/GetValueChart';
 import { useState } from 'react';
+import fetchData from './components/getFetchData';
+import {FROM, TO} from './constants/time'
 
 function App() {
   const [selectedTime, setSelectedTime] = useState(10);

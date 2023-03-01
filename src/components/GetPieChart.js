@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { PieChart, Pie, Cell } from 'recharts';
-import GetFetchData from './getFetchData';
+import fetchData from './getFetchData';
 import useInterval from './useInterval';
 
 function GetPieChart({selectedTime}) {
@@ -8,11 +8,11 @@ function GetPieChart({selectedTime}) {
     const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#AF19FF'];
     
     useEffect(() => {
-        GetFetchData('pie', setPieData, selectedTime);
-    }, []);
+        fetchData('pie', setPieData, selectedTime);
+    }, [selectedTime]);
 
     useInterval(() => {
-        GetFetchData('pie', setPieData, selectedTime);
+        fetchData('pie', setPieData, selectedTime);
     }, 10000)
 
     return (

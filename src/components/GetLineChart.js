@@ -8,18 +8,18 @@ import {
     Tooltip,
     Legend,
 } from 'recharts';
-import GetFetchData from './getFetchData';
+import fetchData from './getFetchData';
 import useInterval from './useInterval';
 
 function GetLineChart({selectedTime}) {
     const [lineData, setLineData] = useState([]);
 
     useEffect(() => {
-        GetFetchData('timeseries', setLineData, selectedTime);
-    }, []);
+        fetchData('timeseries', setLineData, selectedTime);
+    }, [selectedTime]);
 
     useInterval(() => {
-        GetFetchData('timeseries', setLineData, selectedTime);
+        fetchData('timeseries', setLineData, selectedTime);
     }, 10000)
 
     return (
