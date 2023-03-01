@@ -1,7 +1,8 @@
 import { FROM, TO } from "../constants/time";
 
-const fetchData = async (urlLink, setData) => {
-    const response = await fetch(`/${urlLink}?from=${FROM}&to=${TO}`);
+const fetchData = async (urlLink, setData, selected) => {
+    const toTime = TO(selected);
+    const response = await fetch(`/${urlLink}?from=${FROM}&to=${toTime}`);
   
     try {
         const data = await response.json();

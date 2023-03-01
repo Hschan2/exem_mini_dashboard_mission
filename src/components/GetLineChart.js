@@ -11,15 +11,15 @@ import {
 import GetFetchData from './getFetchData';
 import useInterval from './useInterval';
 
-function GetLineChart() {
+function GetLineChart({selectedTime}) {
     const [lineData, setLineData] = useState([]);
 
     useEffect(() => {
-        GetFetchData('timeseries', setLineData);
+        GetFetchData('timeseries', setLineData, selectedTime);
     }, []);
 
     useInterval(() => {
-        GetFetchData('timeseries', setLineData);
+        GetFetchData('timeseries', setLineData, selectedTime);
     }, 10000)
 
     return (
